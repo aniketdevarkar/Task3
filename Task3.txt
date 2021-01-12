@@ -1,0 +1,423 @@
+name :  Aniket Devarkar
+task :  3
+batch : B20
+*********************************************************************************************
+
+Problem 0 : Part A (15 mins):
+Playing with JSON object’s Values:
+Fluffy sorry, Fluffyy is my fav cat and it has 2 catFriends
+Write a code to get the below details of Fluffyy so that
+I can take him to vet.
+
+  var cat = {
+ name: 'Fluffy',
+ activities: ['play', 'eat cat food'],
+ catFriends: [
+ {
+ name: 'bar',
+ activities: ['be grumpy', 'eat bread omblet'],
+ weight: 8,
+ furcolor: 'white'
+ }, 
+ {
+ name: 'foo',
+ activities: ['sleep', 'pre-sleep naps'],
+ weight: 3
+ }
+ ]
+}
+
+console.log(cat);
+
+1.Basic Tasks to play with JSON
+2.Add height and weight to Fluffy3.
+3.Fluffy name is spelled wrongly. Update it to Fluffyy
+4.List all the activities of Fluffyy’s catFriends.
+5.Print the catFriends names.
+6.Print the total weight of catFriends
+7.Print the total activities of all cats (op:6)
+8.Add 2 more activities to bar & foo cats
+9.Update the fur color of bar
+
+solution :-
+
+  var cat = {
+ name: 'Fluffy',
+ activities: ['play', 'eat cat food'],
+ catFriends: [
+ {
+ name: 'bar',
+ activities: ['be grumpy', 'eat bread omblet'],
+ weight: 8,
+ furcolor: 'white'
+ }, 
+ {
+ name: 'foo',
+ activities: ['sleep', 'pre-sleep naps'],
+ weight: 3
+ }
+ ]
+}
+
+
+cat.height = 12;    // Adding height to fluffy
+cat.weight = 4;     // Adding weight to fluffy
+
+cat.name = 'Fluffyy';  //updated fluffy to Fluffy;
+
+
+for(var i in cat.catFriends){
+    console.log(cat.catFriends[i].activities); //printing all the activities catFriends
+}
+
+for(var i in cat.catFriends){
+    console.log(cat.catFriends[i].name); //printing all the names of catFriends
+}
+
+let totalWeight = 0;
+
+for(var i in cat.catFriends){
+   totalWeight += cat.catFriends[i].weight; //
+}
+
+console.log(totalWeight);  //printing totalWeight of catFriends
+let totalActivities= 0;
+
+for(let i in cat.activities){          // to calculate cat count
+    totalActivities++;
+}
+
+
+for(let i in cat.catFriends){
+for(let j in cat.catFriends[i].activities){     // to calculate catFriends count
+   
+    totalActivities++; 
+}
+}
+console.log(totalActivities);          // totalActivities of all cats
+
+         
+ cat.catFriends[0].activities.push('play with tale'); //to add new activity to bar
+ 
+ cat.catFriends[1].activities.push('play with ball'); //to add new activity to foo
+ 
+ 
+cat.catFriends[0].furcolor = 'Black';      //updated furcolor of bar to
+
+console.log(cat)        //print object cat
+
+************************************************************************************************
+
+Problem 0 : Part B (15 mins):
+Iterating with JSON object’s Values
+Above is some information about my car. As you can see, I am not the best driver.
+I have caused a few accidents.
+Please update this driving record so that I can feel better about my driving skills.
+
+var myCar = {
+ make: 'Bugatti',
+ model: 'Bugatti La Voiture Noire',
+ year: 2019,
+ accidents: [
+ {
+ date: '3/15/2019',
+ damage_points: '5000',
+ atFaultForAccident: true
+ },
+ {
+ date: '7/4/2022',
+ damage_points: '2200',
+ atFaultForAccident: true
+ },
+ {
+ date: '6/22/2021',
+ damage_points: '7900',
+ atFaultForAccident: true
+ }
+ ]
+}
+
+1.Loop over the accidents array. Change atFaultForAccident from true to false.
+2. Print the dated of my accidents
+
+solution:-
+for(let i in myCar.accidents)
+{
+    //Changed atFaultForAccident from true to false.
+    myCar.accidents[i].atFaultForAccident = false;
+    
+    //print dates
+    console.log(myCar.accidents[i].date);
+}
+console.log(myCar);
+
+********************************************************************************************
+Problem 1 (5 mins):
+Parsing an JSON object’s Values:
+Write a function called “printAllValues” which returns an newArray of all the input 
+object’s values.
+Input (Object):
+var object = {name: “RajiniKanth”, age: 33, hasPets : false};
+Output:
+[“RajiniKanth”, 33, false]
+
+solution : -
+	var obj = {name : "RajiniKanth", age : 33, hasPets : false};
+function printAllValues(obj) {
+ // your code here
+ console.log(Object.values(obj));   // print all values of object
+}
+
+printAllValues(obj);
+
+*******************************************************************************************
+Problem 2(5 mins) :
+Parsing an JSON object’s Keys:
+Write a function called “printAllKeys” which returns an newArray of all the
+ input object’s keys.
+Example Input:
+{name : ‘RajiniKanth’, age : 25, hasPets : true}
+Example Output:
+[‘name’, ‘age’, ‘hasPets’]
+
+solution : - 
+	var obj ={name : 'RajiniKanth', age : 25, hasPets : true};
+ function printAllKeys(obj) {
+ // your code here
+ console.log(Object.keys(obj));
+}
+printAllKeys(obj);
+
+*******************************************************************************************
+Problem 3( 7–9 mins):
+Parsing an JSON object and convert it to a list:
+Write a function called “convertObjectToList” which converts an object literal 
+into an array of arrays.
+Input (Object):
+var object = {name: “ISRO”, age: 35, role: “Scientist”};
+Output:
+[[“name”, “ISRO”], [“age”, 35], [“role”, “Scientist”]]
+
+solution : -
+
+var obj = {name: "ISRO", age: 35, role: "Scientist"};
+function convertListToObject(obj) {
+ // your code here
+ let arr = [];
+ 
+ for(let key in obj)
+     arr.push([key,obj[key]]);
+console.log(arr);
+ 
+}
+
+convertListToObject(obj);
+
+*******************************************************************************************
+Problem 4( 5 mins):
+Parsing a list and transform the first and last elements of it:
+Write a function ‘transformFirstAndLast’ that takes in an array, 
+and returns an object with:
+1) the first element of the array as the object’s key, and
+2) the last element of the array as that key’s value.
+Input (Array):
+var array = [“GUVI”, “I”, “am”, “Geek”];
+Output:
+var object = {
+GUVI : “Geek”
+}
+
+solution : -
+var arr = ['GUVI', 'I', 'am', 'a geek'];
+function transformFirstAndLast(arr) {
+ let newObject = {};
+ 
+ 
+     newObject[arr[0]] = arr[arr.length-1];
+
+ return newObject;
+}
+
+console.log(transformFirstAndLast(arr));
+
+*******************************************************************************************
+Problem 5 ( 7 -9 mins):
+Parsing a list of lists and convert into a JSON object:
+Write a function “fromListToObject” which takes in an array of arrays, 
+and returns an object with each pair of elements in the array as a key-value pair.
+Input (Array):
+var array = [[“make”, “Ford”], [“model”, “Mustang”], [“year”, 1964]];
+Output:
+var object = {
+make : “Ford”
+model : “Mustang”,
+year : 1964
+}
+
+solution : -
+var arr = [['make', 'Ford'], ['model', 'Mustang'], ['year', 1964]];
+function fromListToObject(arr) {
+ var newObject = {};
+ for(let i=0;i<arr.length;i++){
+     newObject[arr[i][0]] = arr[i][1];
+ }
+ return newObject;
+}
+
+console.log(fromListToObject(arr));
+
+*******************************************************************************************
+Problem 6 (10 mins):
+Parsing a list of lists and convert into a JSON object:
+Write a function called “transformGeekData” that transforms some set of data from one format
+ to another.
+Input (Array):
+var array = [[[“firstName”, “Vasanth”], [“lastName”, “Raja”], [“age”, 24], [“role”,
+ “JSWizard”]], [[“firstName”, “Sri”], [“lastName”, “Devi”], [“age”, 28], [“role”, “Coder”]]];
+Output:
+[
+{firstName: “Vasanth”, lastName: “Raja”, age: 24, role: “JSWizard”},
+{firstName: “Sri”, lastName: “Devi”, age: 28, role: “Coder”}
+]
+
+solution:-
+	var arr= [[['firstName', 'Vasanth'], ['lastName', 'Raja'], ['age', 24], 
+['role', 'JSWizard']], [['firstName', 'Sri'], ['lastName', 'Devi'], ['age', 28], 
+['role', 'Coder']]];
+function transformEmployeeData(arr) {
+ var tranformEmployeeList = [];
+ 
+ for(let i=0;i<arr.length;i++){
+     let obj = {};
+     for(let j=0;j<4;j++){
+         obj[arr[i][j][0]] = arr[i][j][1]; 
+     }
+     tranformEmployeeList.push(obj);
+ }
+ //Your code
+ 
+ return tranformEmployeeList;
+}
+console.log(transformEmployeeData(arr));
+
+*******************************************************************************************
+Problem 7 (10 — 20 mins):
+Parsing two JSON objects and Compare:
+Read this : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+/Global_Objects/JSON/stringify
+Write an “assertObjectsEqual” function from scratch.
+Assume that the objects in question contain only scalar values (i.e., simple values like strings or numbers).
+It is OK to use JSON.stringify().
+Note: The examples below represent different use cases for the same test. In practice, you should never have multiple tests with the same name.
+Success Case:
+Input:
+var expected = {foo: 5, bar: 6};
+var actual = {foo: 5, bar: 6}
+assertObjectsEqual(actual, expected, ‘detects that two objects are equal’);
+Output:
+Passed
+Failure Case:
+Input:var expected = {foo: 6, bar: 5};
+var actual = {foo: 5, bar: 6}
+assertObjectsEqual(actual, expected, ‘detects that two objects are equal’);
+Output:
+FAILED [my test] Expected {“foo”:6,”bar”:5}, but got {“foo”:5,”bar”:6}
+
+solution:- 
+
+var expected = {foo: 5, bar: 6};
+var actual = {foo: 5, bar: 7}
+function assertObjectsEqual(actual, expected, testName){
+ // your code here
+ let actualstring = JSON.stringify(actual);
+ let expectedstring = JSON.stringify(expected);
+ let flag = 0;
+ for(let i in expectedstring){
+    if(expectedstring[i] !== actualstring[i]){
+        flag= 1;
+    }
+ }
+  if(flag)
+ console.log("FAILED " + "["+testName+"]" + " Expected" +expectedstring +", but got"+ 
+ actualstring);
+ else
+ console.log("PASSED");
+}
+
+assertObjectsEqual(actual,expected,'detect')
+
+*******************************************************************************************
+Problem 8(10 mins):
+Parsing JSON objects and Compare:
+I have a mock data of security Questions and Answers. 
+You function should take the object and a pair of strings and should return
+ if the quest is present and if its valid answer
+
+solution : - 
+
+var securityQuestions = [
+ {
+ question: 'What was your first pet’s name?',
+ expectedAnswer: 'FlufferNutter'
+ },
+ {
+ question: 'What was the model year of your first car?',
+ expectedAnswer: '1985'
+ },
+ {
+ question: 'What city were you born in?',
+ expectedAnswer: 'NYC'
+ }
+]
+function chksecurityQuestions(securityQuestions,question,ans) {
+
+ // your code here
+ //return true or false; 
+ for(let i in securityQuestions){
+     if(securityQuestions[i].question === question){
+         if(securityQuestions[i].expectedAnswer === ans)
+            return true;
+     }
+ }
+ return false;
+}
+//Test case1:
+var ques = 'What was your first pet’s name?';
+var ans  =  'FlufferNutter';
+let status = chksecurityQuestions(securityQuestions, ques, ans);
+console.log(status); // true
+//Test case2:
+var ques = 'What was your first pet’s name?';
+var ans  =  'DufferNutter';
+status = chksecurityQuestions(securityQuestions, ques, ans);
+console.log(status); // false
+
+*******************************************************************************************
+Problem 9(20 mins):
+Parsing JSON objects and Compare:
+Write a function to return the list of characters below 20 age
+
+solution : -
+
+var students = [
+ {
+ name: 'Siddharth Abhimanyu', age: 21}, { name: 'Malar', age: 25},
+ {name: 'Maari',age: 18},{name: 'Bhallala Deva',age: 17},
+ {name: 'Baahubali',age: 16},{name: 'AAK chandran',age: 23},   
+{name:'Gabbar Singh',age: 33},{name: 'Mogambo',age: 53},
+ {name: 'Munnabhai',age: 40},{name: 'Sher Khan',age: 20},
+ {name: 'Chulbul Pandey',age: 19},{name: 'Anthony',age: 28},
+ {name: 'Devdas',age: 56} 
+ ];
+function returnMinors(arr)
+{
+    let arr1 =[];
+    for(let i in arr){
+        if(students[i].age<20)
+            arr1.push(arr[i]);
+    }
+    return arr1;
+}
+console.log(returnMinors(students));
+
+**********************************************END********************************************
